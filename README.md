@@ -1,3 +1,17 @@
+# Introduce this app
+This is a website that uses movie slideshows designed by me for my react learning
+
+# Technology used
+React 
+Material UI
+
+# Unfixed bugs
+Pressing 2 play buttons will get an error
+
+# Demo
+https://github.com/webbythien/film-list/assets/54788371/01603aec-9b96-43ad-aa69-8e326a564fc9
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
