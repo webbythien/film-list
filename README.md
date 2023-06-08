@@ -2,7 +2,7 @@
 This is a website that uses movie slideshows designed by me for my react learning
 
 # Technology used
-React 
+React,
 Material UI
 
 # Unfixed bugs
