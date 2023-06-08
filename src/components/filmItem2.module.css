@@ -1,0 +1,88 @@
+.backgroundFilm2{
+  background-color: black !important;
+  background-image: none !important;
+}
+
+.glass{
+  background: rgba(255, 255, 255, 0.55)  ;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px #4747470b;
+  backdrop-filter: blur(7.1px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition:transform .5s, box-shadow .3s;
+  width: 320px;
+  height: 400px;
+}
+.glass:hover{
+  transform: translateY(-10px) scale(1.02) perspective(0px);
+  /* box-shadow: 0px 10px 10px rgba(255,0,0,.7); */
+  box-shadow: 5px 5px 10px rgba(253, 0, 0, 0.7);
+  cursor: pointer;
+}
+
+.glassDetail{
+  background: rgba(24, 24, 24, 0.497)  ;
+  color: rgba(201, 198, 198, 0.792);
+  border-radius: 50%;
+  box-shadow: 0 4px 30px #4747470b;
+  /* backdrop-filter: blur(7.1px); */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+
+.glassDetail:hover{
+  transform:scale(1.05) perspective(0px);
+  color: white;
+  /* box-shadow: 0px 10px 10px rgba(255,0,0,.7); */
+  box-shadow: 0px 0px 10px rgba(233, 230, 230, 0.7);/*rgba(33,33,33,.7)*/
+  cursor: pointer;
+}
+
+.glassDescrip{
+  background: rgba(255, 255, 255, 0.55)  ;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px #4747470b;
+  backdrop-filter: blur(7.1px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  height: 100%;
+}
+.btnPlay:hover{
+  transform: scale(1.02) perspective(0px);
+  /* box-shadow: 0px 10px 10px rgba(255,0,0,.7); */
+  box-shadow: 0px 0px 10px rgba(233, 230, 230, 0.7);/*rgba(33,33,33,.7)*/
+  cursor: pointer;
+}
+
+.btnPlay{
+  background: rgba(255, 255, 255, 0.55) !important ;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px #4747470b;
+  backdrop-filter: blur(7.1px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+.btnClose:hover{
+  transform: scale(1.02) perspective(0px);
+  /* box-shadow: 0px 10px 10px rgba(255,0,0,.7); */
+  box-shadow: 0px 0px 10px rgba(233, 230, 230, 0.7);
+  /* filter: drop-shadow(0 0 20px #eee9e9); */
+  cursor: pointer;
+}
+.glassModal{
+  background: rgba(255, 255, 255, 0.55)   ;
+  box-shadow: 0 4px 30px #4747470b;
+  backdrop-filter: blur(7.1px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: absolute,
+    /* top: 50%,
+    left: 50",
+    transform: translate(-50%, -50%),
+    width: 65%,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    pt: 2,
+    px: 4,
+    pb: 3, */
+}
