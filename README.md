@@ -9,11 +9,9 @@ Material UI
 Pressing 2 play buttons will get an error
 
 # Demo
-https://github.com/webbythien/film-list/assets/54788371/01603aec-9b96-43ad-aa69-8e326a564fc9
-
+https://github.com/webbythien/film-list/assets/54788371/73732afe-9f76-495c-8f00-24ed9ef278f8
 
 # Getting Started with Create React App
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
