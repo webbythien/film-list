@@ -99,7 +99,14 @@ function Details() {
                 marginTop: "-12%",
                 marginLeft: "2%",
                 padding: "10px",
+                
+                "@media (max-width: 700px)": {
+                  width: "10%",
+                  marginTop: "-5%",
+                  marginLeft: "2%",
+                },
               }}
+              
               className={styles.glassDetail}
             >
               <ArrowBackIosNewIcon />
@@ -127,14 +134,19 @@ function Details() {
                   <PlayArrowIcon fontSize="large" />
                   Play
                 </Typography>
-                <Box sx={{ flexGrow: 1, height: "300px" }}>
+                <Box sx={{ flexGrow: 1, height: "300px" , display: { xs: "none", sm: "block" }}}>
                   <Grid
                     className={styles.glassDescrip}
                     container
                     spacing={2}
                     h-screen
                   >
-                    <Grid textAlign={"center"} item xs={4}>
+                    <Grid
+                      textAlign={"center"}
+                      item
+                      xs={4}
+                      
+                    >
                       <Item
                         style={{
                           overflow: "hidden",

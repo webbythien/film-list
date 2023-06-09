@@ -30,7 +30,7 @@ function Screen() {
   useEffect(() => {
     document.title = newFilm.Author
       ? `${newFilm.Title} - ${newFilm.Author}`
-      : "Lab 4";
+      : "Love Story";
 
       // const newFavicon = document.createElement("link");
       // newFavicon.rel = "icon";
@@ -68,6 +68,7 @@ function Screen() {
         sx={{
           marginBottom: "5%",
           marginLeft: "2%",
+          width: "100%"
         }}
         fixed
         maxWidth="md"
@@ -82,7 +83,7 @@ function Screen() {
             onPause={handlePause}
             onPlay={handlePlay}
             playing={play}
-            width={"900px"}
+            width={"100%"}
             url={newFilm.url}
             onChange={(e)=>console.log(e)}
           />
@@ -96,8 +97,9 @@ function Screen() {
             display: "flex",
             justifyContent: "left",
             alignItems: "center",
-            width: "900px",
+            width: "100%",
             marginLeft: "1.8%",
+            flexDirection: { xs: "column", sm: "row" }, 
           }}
         >
           <Description newFilm={newFilm} />

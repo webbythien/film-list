@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/film-list/static/css/main.da7b5e82.css",
-    "main.js": "/film-list/static/js/main.7c0b265e.js",
+    "main.js": "/film-list/static/js/main.8d84dbfe.js",
     "static/js/787.94432b0c.chunk.js": "/film-list/static/js/787.94432b0c.chunk.js",
     "static/media/video3.mp4": "/film-list/static/media/video3.285f6fdf1e24cfc9479d.mp4",
     "static/media/video2.mp4": "/film-list/static/media/video2.8b0432723e8de6250c49.mp4",
@@ -9,16 +9,16 @@
     "static/media/imageBackground1.png": "/film-list/static/media/imageBackground1.2179ce2026166f59b542.png",
     "static/media/z4418218113862_jpg": "/film-list/static/media/z4418218113862_b2628c9a781f25a872aaefdd15ea4d01.cc7c48e3832633824dce.jpg",
     "static/media/background_original_2.jpg": "/film-list/static/media/background_original_2.514547b5601046f8b518.jpg",
-    "static/media/DALATBackground2.png": "/film-list/static/media/DALATBackground2.7541ff60d3895903b86c.png",
+    "static/media/DALATBackground2.png": "/film-list/static/media/DALATBackground2.96186a86bfd4bcc83880.png",
     "static/media/z4418293152453_jpg": "/film-list/static/media/z4418293152453_17856ff602dae2c53ad4fcce62747c7d.7f3337bf2dce80828029.jpg",
     "static/media/z4418218122806_jpg": "/film-list/static/media/z4418218122806_81a441bf63e2a1f17af30fef2a14ab2b.74f26f591986a0428fa3.jpg",
     "index.html": "/film-list/index.html",
     "main.da7b5e82.css.map": "/film-list/static/css/main.da7b5e82.css.map",
-    "main.7c0b265e.js.map": "/film-list/static/js/main.7c0b265e.js.map",
+    "main.8d84dbfe.js.map": "/film-list/static/js/main.8d84dbfe.js.map",
     "787.94432b0c.chunk.js.map": "/film-list/static/js/787.94432b0c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.da7b5e82.css",
-    "static/js/main.7c0b265e.js"
+    "static/js/main.8d84dbfe.js"
   ]
 }

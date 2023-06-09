@@ -59,7 +59,7 @@ function ResponsiveAppBar() {
   // const totalRotation = 360 * spinsPerDuration; // Total rotation in degrees
   // const controls = useAnimation();
   //----------------------------- sửa
-  const [view, setView] = React.useState(true);
+  const [view, setView] = React.useState(false);
   const dispatch = useDispatch();
   const handleChange = (event, nextView) => {
     if (nextView !== null) {
@@ -136,7 +136,6 @@ function ResponsiveAppBar() {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              <MenuIcon />
             </IconButton>
 
             <Menu
