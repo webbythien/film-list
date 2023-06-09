@@ -6,8 +6,61 @@ import FilmItem2 from "./FilmItem2";
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
+import imageBackground1 from '../imageList/imageBackground1.png'
+import video1 from '../imageList/video1.mp4'
+import avatar1 from '../imageList/z4418293152453_17856ff602dae2c53ad4fcce62747c7d.jpg'
+import imageBackground2 from '../imageList/DALATBackground2.png'
+import video2 from '../imageList/video2.mp4'
+import video3 from '../imageList/video3.mp4'
+import avatar2 from '../imageList/z4418218122806_81a441bf63e2a1f17af30fef2a14ab2b.jpg'
+import avatar3 from '../imageList/z4418218113862_b2628c9a781f25a872aaefdd15ea4d01.jpg'
+
+
 function FilmList() {
   const films = [
+    {
+      id: 2,
+      Image: `${imageBackground1}`,
+      Title: "Dalat Trip",
+      Year: "2023",
+      Nation: "Dalat Vietnam",
+      url: `${video1}`,
+      description:
+        "Dalat or Da Lat is the capital city of Lam Dong province, Vietnam. Da Lat is the City of Flowers and honeymooners with lovely French villas, the fresh air, the beautiful waterfalls and gorgeous lakes sits in a lush and green valley of postcard beauty. ",
+      Avatar:
+        `https://scontent.fsgn5-14.fna.fbcdn.net/v/t39.30808-6/321790483_995274834782640_5233605753255069396_n.jpg?stp=cp6_dst-jpg&_nc_cat=101&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=A_hakQKd7uMAX_EoTAU&_nc_ht=scontent.fsgn5-14.fna&oh=00_AfC2ip5luE57bdm-bFQP48AMwZdoJQwwA5QtkMdixWzO6w&oe=64882C0D`,
+      Author: "Ngọc Huyền - Hoàng Thiên",
+      Facebook: "https://www.facebook.com/Hoangthien004",
+      Poster: `${avatar1}`
+    },
+    {
+      id: 3,
+      Image:`${imageBackground2}`,
+      Title: "Dalat Trip",
+      Year: "2023",
+      Nation: "Dalat-Vietnam",
+      url: `${video2}`,
+      description:"Dalat or Da Lat is the capital city of Lam Dong province, Vietnam. Da Lat is the City of Flowers and honeymooners with lovely French villas, the fresh air, the beautiful waterfalls and gorgeous lakes sits in a lush and green valley of postcard beauty. ",
+      Avatar:`https://scontent.fsgn5-14.fna.fbcdn.net/v/t39.30808-6/321790483_995274834782640_5233605753255069396_n.jpg?stp=cp6_dst-jpg&_nc_cat=101&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=A_hakQKd7uMAX_EoTAU&_nc_ht=scontent.fsgn5-14.fna&oh=00_AfC2ip5luE57bdm-bFQP48AMwZdoJQwwA5QtkMdixWzO6w&oe=64882C0D`,
+      Author: "Ngọc Huyền - Hoàng Thiên",
+      Facebook: "https://www.facebook.com/Hoangthien004",
+      Poster:
+        `${avatar2}`,
+    },
+    {
+      id: 4,
+      Image:`${imageBackground2}`,
+      Title: "Dalat Trip",
+      Year: "2023",
+      Nation: "Dalat-Vietnam",
+      url: `${video3}`,
+      description:"Dalat or Da Lat is the capital city of Lam Dong province, Vietnam. Da Lat is the City of Flowers and honeymooners with lovely French villas, the fresh air, the beautiful waterfalls and gorgeous lakes sits in a lush and green valley of postcard beauty. ",
+      Avatar:`https://scontent.fsgn5-14.fna.fbcdn.net/v/t39.30808-6/321790483_995274834782640_5233605753255069396_n.jpg?stp=cp6_dst-jpg&_nc_cat=101&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=A_hakQKd7uMAX_EoTAU&_nc_ht=scontent.fsgn5-14.fna&oh=00_AfC2ip5luE57bdm-bFQP48AMwZdoJQwwA5QtkMdixWzO6w&oe=64882C0D`,
+      Author: "Ngọc Huyền - Hoàng Thiên",
+      Facebook: "https://www.facebook.com/Hoangthien004",
+      Poster:
+        `${avatar3}`,
+    },
     {
       id: 1,
       Image:
@@ -23,53 +76,6 @@ function FilmList() {
       Facebook: "https://www.facebook.com/ameest319",
       Poster:
         "https://dt.muvi.vn/test/thumbnails/song/2023/03/28/artworks-c50r8eqmm2lxm78x-qpupzg-t500x500_20230328111338.jpg",
-    },
-    {
-      id: 2,
-      Image: "https://i.ytimg.com/vi/mbEZ_9dhM_Y/maxresdefault.jpg",
-      Title: "2h",
-      Year: "2023",
-      Nation: "Vietnam",
-      url: "https://www.youtube.com/watch?v=mbEZ_9dhM_Y",
-      description:
-        "Mck is the best gen-z rapper, Nghiem Vu Hoang Long (born March 2, 1999 in Hanoi), better known by his stage name MCK, RPT MCK, Nger, or Ngo (when he was still pursuing indie music) is a male rapper and singer. and composer of Vietnamese music.",
-      Avatar:
-        "https://i1.sndcdn.com/artworks-kdpyy8Yz17JTCmGL-DSyu4A-t240x240.jpg",
-      Author: "MCK//Nger",
-      Facebook: "https://www.facebook.com/hoanglongmck",
-      Poster: "https://i.ytimg.com/vi/GT3GHsuXUnk/maxresdefault.jpg",
-    },
-    {
-      id: 3,
-      Image:
-        "https://gocdoday.com/wp-content/uploads/2023/05/thumb-1-1024x576.jpg",
-      Title: "Xin lỗi",
-      Year: "2023",
-      Nation: "Vietnam",
-      url: "https://www.youtube.com/watch?v=66aJVuGbtaA",
-      description: "Thắng Ngọt-band",
-      Avatar:
-        "https://scontent.fsgn5-9.fna.fbcdn.net/v/t39.30808-6/345632273_1002452384446527_3680912144327727143_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=kpsx8277H7QAX8Md3-q&_nc_ht=scontent.fsgn5-9.fna&oh=00_AfB0VmMHigJB7bOJwXVcTKcDAf_bY9N_UoiN2fnrLnk_YQ&oe=647EB22F",
-      Author: "Vũ Đình Trọng Thắng",
-      Facebook: "https://www.facebook.com/profile.php?id=100089031510030",
-      Poster:
-        "https://dt.muvi.vn/test/social/song/2023/05/18/xin-loi20230518162128_20230518162129.jpg",
-    },
-    {
-      id: 4,
-      Image:
-        "https://images2.thanhnien.vn/Uploaded/quochungqc/2022_12_14/avatar-2-imax-3d-6584.jpg",
-      Title: "Avatar: The Way of Water",
-      Year: "2023",
-      Nation: "USA",
-      url: "https://www.youtube.com/watch?v=d9MyW72ELq0",
-      description: `Set more than a decade after the events of the first film, “Avatar: The Way of Water” begins to tell the story of the Sully family (Jake, Neytiri, and their kids), the trouble that follows them, the lengths they go to keep each other safe, the battles they fight to stay alive, and the tragedies they endure.
-        Directed by James Cameron and produced by Cameron and Jon Landau, the Lightstorm Entertainment Production stars Sam Worthington, Zoe Saldaña, Sigourney Weaver, Stephen Lang and Kate Winslet. Screenplay by James Cameron & Rick Jaffa & Amanda Silver. Story by James Cameron & Rick Jaffa & Amanda Silver & Josh Friedman & Shane Salerno. David Valdes and Richard Baneham serve as the film’s executive producers.`,
-      Avatar:
-        "https://yt3.googleusercontent.com/ytc/AGIKgqNbzmJtM68W_QkrI3P5RsAAijWpjTnDwwZej9TnMQ=s176-c-k-c0x00ffffff-no-rj",
-      Author: "Avatar",
-      Facebook: "https://www.youtube.com/@AvatarOfficial",
-      Poster: "https://m.media-amazon.com/images/I/71Lvqoov42L.jpg",
     },
     {
       id: 5,
