@@ -10,7 +10,7 @@ export const AuthContextProvider = ({ children }) => {
   const [play, setPlay] = useState();
   const [duration, setDuration] = useState();
   const check = useSelector(filmSelector);
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(false);
   const takeDuration = (dura) => {
     return dura;
   };
