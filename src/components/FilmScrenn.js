@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./allscrenn.module.css";
 import FilmList from "./FilmList";
 import Screen from "./Screen";
 import { FilmAuth } from "../context/FilmContext";
 import ResponsiveAppBar from "./ResponsiveAppBar";
 function FilmScrenn() {
-  const { play, setToggle, toggle } = FilmAuth();
+  const { play, setToggle, toggle,checkDelete } = FilmAuth();
 
   return (
     <>

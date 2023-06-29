@@ -8,31 +8,36 @@ import { useNavigate } from "react-router-dom";
 import { FilmAuth } from "../context/FilmContext";
 import { useDispatch } from "react-redux";
 import { addFilm } from "../redux/actions";
+import EditDeleteBtn from "./EditDeleteBtn";
 
 function FilmItem2({ film }) {
-  const { play, setToggle, toggle } = FilmAuth();
-  const dispatch=useDispatch()
+  const { play, setToggle, toggle,openUpdate } = FilmAuth();
+  const dispatch = useDispatch();
   const Item = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(1),
     textAlign: "center",
     color: theme.palette.text.secondary,
   }));
   const navigate = useNavigate();
-  const handleDetails = ()=>{
-    dispatch(addFilm(film));
-    navigate('/details')
-  }
-  useEffect(()=>{
-    setToggle(false)
-  },[])
+  const handleDetails = () => {
+    if(!openUpdate){
+      dispatch(addFilm(film));
+      navigate("/details");
+    }
+  };
+  useEffect(() => {
+    setToggle(false);
+  }, []);
+
+
   return (
     <>
       <Item
         onClick={handleDetails}
         style={{
-          background: '#ffffff8c',
+          background: "#ffffff8c",
           borderRadius: "16px",
-          backdropFilter: 'blur(7.1px)',
+          backdropFilter: "blur(7.1px)",
           backgroundImage: `url(${film.Poster})`,
           backgroundPosition: "center",
           backgroundSize: "cover",
@@ -51,6 +56,7 @@ function FilmItem2({ film }) {
 
         // }}
       >
+      <EditDeleteBtn film={film}/>
       </Item>
     </>
   );

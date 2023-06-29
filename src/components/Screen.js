@@ -32,10 +32,10 @@ function Screen() {
       ? `${newFilm.Title} - ${newFilm.Author}`
       : "Love Story";
 
-      // const newFavicon = document.createElement("link");
-      // newFavicon.rel = "icon";
-      // newFavicon.href = newFilm.Avatar; // Replace with the path to your favicon.ico file
-      // document.head.appendChild(newFavicon);
+    // const newFavicon = document.createElement("link");
+    // newFavicon.rel = "icon";
+    // newFavicon.href = newFilm.Avatar; // Replace with the path to your favicon.ico file
+    // document.head.appendChild(newFavicon);
 
     document.body.style.backgroundImage = `url(${newFilm.Image})`;
   }, [play]);
@@ -68,7 +68,7 @@ function Screen() {
         sx={{
           marginBottom: "5%",
           marginLeft: "2%",
-          width: "100%"
+          width: "100%",
         }}
         fixed
         maxWidth="md"
@@ -85,7 +85,7 @@ function Screen() {
             playing={play}
             width={"100%"}
             url={newFilm.url}
-            onChange={(e)=>console.log(e)}
+            onChange={(e) => console.log(e)}
           />
         </div>
       </Container>
@@ -97,12 +97,14 @@ function Screen() {
             display: "flex",
             justifyContent: "left",
             alignItems: "center",
-            width: "100%",
+            width: "90%",
             marginLeft: "1.8%",
-            flexDirection: { xs: "column", sm: "row" }, 
+            flexDirection: { xs: "column", sm: "row" },
           }}
         >
-          <Description newFilm={newFilm} />
+          <div style={{width:'100%'}}>
+            <Description newFilm={newFilm} />
+          </div>
           <CardMedia
             component="img"
             sx={{ width: 100 }}

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { filmSelector } from "../redux/selectors";
 import { Avatar, Box, Container, Modal, Typography } from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
@@ -13,6 +13,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import Screen from "./Screen";
 import { useState, CSSProperties } from "react";
 import RingLoader from "react-spinners/RingLoader";
+import { SearchFilm } from "../redux/actions";
 function Details() {
   const navigate = useNavigate();
   const newFilm = useSelector(filmSelector);
@@ -33,7 +34,9 @@ function Details() {
   const [loading, setLoading] = useState(true);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const dispatch= useDispatch()
   React.useEffect(() => {
+    dispatch(SearchFilm(''))
     document.body.style.backgroundImage = `none`;
     window.scrollTo(0, 0);
   }, [open]);

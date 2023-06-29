@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FilmItem from "./FilmItem";
 import styles from "./allscrenn.module.css";
 import { FilmAuth } from "../context/FilmContext";
@@ -6,20 +6,28 @@ import FilmItem2 from "./FilmItem2";
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
-import imageBackground1 from '../imageList/imageBackground1.png'
-import video1 from '../imageList/video1.mp4'
-import avatar1 from '../imageList/z4418293152453_17856ff602dae2c53ad4fcce62747c7d.jpg'
-import imageBackground2 from '../imageList/DALATBackground2.png'
-import video2 from '../imageList/video2.mp4'
-import video3 from '../imageList/video3.mp4'
-import avatar2 from '../imageList/z4418218122806_81a441bf63e2a1f17af30fef2a14ab2b.jpg'
-import avatar3 from '../imageList/z4418218113862_b2628c9a781f25a872aaefdd15ea4d01.jpg'
-
-
+import imageBackground1 from "../imageList/imageBackground1.png";
+import video1 from "../imageList/video1.mp4";
+import avatar1 from "../imageList/z4418293152453_17856ff602dae2c53ad4fcce62747c7d.jpg";
+import imageBackground2 from "../imageList/DALATBackground2.png";
+import video2 from "../imageList/video2.mp4";
+import video3 from "../imageList/video3.mp4";
+import avatar2 from "../imageList/z4418218122806_81a441bf63e2a1f17af30fef2a14ab2b.jpg";
+import avatar3 from "../imageList/z4418218113862_b2628c9a781f25a872aaefdd15ea4d01.jpg";
+import axios from "axios";
+import Loading from "./Loading";
+import FilmItemAdd from "./FilmItemAdd";
+import FilmItemAdd2 from "./FilmItemAdd2";
+import { useDispatch, useSelector } from "react-redux";
+import { addAllFilm } from "../redux/actions";
+import { allFilm, filmRemainingSelector } from "../redux/selectors";
+import { Toaster } from "react-hot-toast";
 function FilmList() {
+ 
+  axios.defaults.baseURL = 'https://649acbb7bf7c145d02397ce4.mockapi.io/api/';
   const films = [
     {
-      id: 2,
+      id: '2',
       Image: `${imageBackground1}`,
       Title: "Dalat Trip",
       Year: "2023",
@@ -27,42 +35,41 @@ function FilmList() {
       url: `${video1}`,
       description:
         "Dalat or Da Lat is the capital city of Lam Dong province, Vietnam. Da Lat is the City of Flowers and honeymooners with lovely French villas, the fresh air, the beautiful waterfalls and gorgeous lakes sits in a lush and green valley of postcard beauty. ",
-      Avatar:
-        `https://scontent.fsgn5-14.fna.fbcdn.net/v/t39.30808-6/321790483_995274834782640_5233605753255069396_n.jpg?stp=cp6_dst-jpg&_nc_cat=101&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=A_hakQKd7uMAX_EoTAU&_nc_ht=scontent.fsgn5-14.fna&oh=00_AfC2ip5luE57bdm-bFQP48AMwZdoJQwwA5QtkMdixWzO6w&oe=64882C0D`,
+      Avatar: `https://scontent.fsgn5-14.fna.fbcdn.net/v/t39.30808-6/321790483_995274834782640_5233605753255069396_n.jpg?stp=cp6_dst-jpg&_nc_cat=101&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=A_hakQKd7uMAX_EoTAU&_nc_ht=scontent.fsgn5-14.fna&oh=00_AfC2ip5luE57bdm-bFQP48AMwZdoJQwwA5QtkMdixWzO6w&oe=64882C0D`,
       Author: "Ngọc Huyền - Hoàng Thiên",
       Facebook: "https://www.facebook.com/Hoangthien004",
-      Poster: `${avatar1}`
+      Poster: `${avatar1}`,
     },
     {
-      id: 3,
-      Image:`${imageBackground2}`,
+      id: '3',
+      Image: `${imageBackground2}`,
       Title: "Dalat Trip",
       Year: "2023",
       Nation: "Dalat-Vietnam",
       url: `${video2}`,
-      description:"Dalat or Da Lat is the capital city of Lam Dong province, Vietnam. Da Lat is the City of Flowers and honeymooners with lovely French villas, the fresh air, the beautiful waterfalls and gorgeous lakes sits in a lush and green valley of postcard beauty. ",
-      Avatar:`https://scontent.fsgn5-14.fna.fbcdn.net/v/t39.30808-6/321790483_995274834782640_5233605753255069396_n.jpg?stp=cp6_dst-jpg&_nc_cat=101&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=A_hakQKd7uMAX_EoTAU&_nc_ht=scontent.fsgn5-14.fna&oh=00_AfC2ip5luE57bdm-bFQP48AMwZdoJQwwA5QtkMdixWzO6w&oe=64882C0D`,
+      description:
+        "Dalat or Da Lat is the capital city of Lam Dong province, Vietnam. Da Lat is the City of Flowers and honeymooners with lovely French villas, the fresh air, the beautiful waterfalls and gorgeous lakes sits in a lush and green valley of postcard beauty. ",
+      Avatar: `https://scontent.fsgn5-14.fna.fbcdn.net/v/t39.30808-6/321790483_995274834782640_5233605753255069396_n.jpg?stp=cp6_dst-jpg&_nc_cat=101&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=A_hakQKd7uMAX_EoTAU&_nc_ht=scontent.fsgn5-14.fna&oh=00_AfC2ip5luE57bdm-bFQP48AMwZdoJQwwA5QtkMdixWzO6w&oe=64882C0D`,
       Author: "Ngọc Huyền - Hoàng Thiên",
       Facebook: "https://www.facebook.com/Hoangthien004",
-      Poster:
-        `${avatar2}`,
+      Poster: `${avatar2}`,
     },
     {
-      id: 4,
-      Image:`${imageBackground2}`,
+      id: '4',
+      Image: `${imageBackground2}`,
       Title: "Dalat Trip",
       Year: "2023",
       Nation: "Dalat-Vietnam",
       url: `${video3}`,
-      description:"Dalat or Da Lat is the capital city of Lam Dong province, Vietnam. Da Lat is the City of Flowers and honeymooners with lovely French villas, the fresh air, the beautiful waterfalls and gorgeous lakes sits in a lush and green valley of postcard beauty. ",
-      Avatar:`https://scontent.fsgn5-14.fna.fbcdn.net/v/t39.30808-6/321790483_995274834782640_5233605753255069396_n.jpg?stp=cp6_dst-jpg&_nc_cat=101&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=A_hakQKd7uMAX_EoTAU&_nc_ht=scontent.fsgn5-14.fna&oh=00_AfC2ip5luE57bdm-bFQP48AMwZdoJQwwA5QtkMdixWzO6w&oe=64882C0D`,
+      description:
+        "Dalat or Da Lat is the capital city of Lam Dong province, Vietnam. Da Lat is the City of Flowers and honeymooners with lovely French villas, the fresh air, the beautiful waterfalls and gorgeous lakes sits in a lush and green valley of postcard beauty. ",
+      Avatar: `https://scontent.fsgn5-14.fna.fbcdn.net/v/t39.30808-6/321790483_995274834782640_5233605753255069396_n.jpg?stp=cp6_dst-jpg&_nc_cat=101&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=A_hakQKd7uMAX_EoTAU&_nc_ht=scontent.fsgn5-14.fna&oh=00_AfC2ip5luE57bdm-bFQP48AMwZdoJQwwA5QtkMdixWzO6w&oe=64882C0D`,
       Author: "Ngọc Huyền - Hoàng Thiên",
       Facebook: "https://www.facebook.com/Hoangthien004",
-      Poster:
-        `${avatar3}`,
+      Poster: `${avatar3}`,
     },
     {
-      id: 1,
+      id: '1',
       Image:
         "https://newsmd2fr.keeng.net/tiin/archive/imageslead/2023/03/15/90_3a78b163de1af7cb09405815b608ec7b.jpeg",
       Title: "Ưng Quá Chừng",
@@ -78,7 +85,7 @@ function FilmList() {
         "https://dt.muvi.vn/test/thumbnails/song/2023/03/28/artworks-c50r8eqmm2lxm78x-qpupzg-t500x500_20230328111338.jpg",
     },
     {
-      id: 5,
+      id:' 5',
       Image:
         "https://preview.redd.it/new-poster-for-transformers-rise-of-the-beasts-v0-7q84w29raqra1.jpg?auto=webp&s=fe8d57c18cdd9b9a66b945fa9e17e705158d97f3",
       Title: "Transformers: Rise of the Beasts",
@@ -95,7 +102,7 @@ function FilmList() {
         "https://m.media-amazon.com/images/M/MV5BZTNiNDA4NmMtNTExNi00YmViLWJkMDAtMDAxNmRjY2I2NDVjXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_.jpg",
     },
     {
-      id: 6,
+      id: '6',
       Image:
         "https://images2.thanhnien.vn/528068263637045248/2023/6/4/universal-poster-1685866292781850298627.jpg",
       Title: "Oppenheimer",
@@ -113,7 +120,7 @@ function FilmList() {
       Poster: "https://posterspy.com/wp-content/uploads/2023/03/OPPEN-15.jpg",
     },
     {
-      id: 7,
+      id: '7',
       Image:
         "https://genk.mediacdn.vn/2019/11/12/1-1573571042465953988347.jpeg",
       Title: "Avengers: Endgame",
@@ -130,7 +137,7 @@ function FilmList() {
         "https://cdn.marvel.com/content/2x/MLou2_Payoff_1-Sht_Online_DOM_v7_Sm.jpg",
     },
     {
-      id: 8,
+      id: '8',
       Image: "https://i.ytimg.com/vi/QMxo3p7m0_4/maxresdefault.jpg",
       Title: "Moana Live Action",
       Year: "2024",
@@ -145,7 +152,7 @@ function FilmList() {
       Poster: "https://collinsrace1.files.wordpress.com/2023/04/moana2-1.jpg",
     },
     {
-      id: 9,
+      id: '9',
       Image:
         "https://static2.vieon.vn/vieplay-image/carousel_web_v4/2023/03/13/76qfvn15_1920x1080-titanic_1920_1080.jpeg",
       Title: "Titanic",
@@ -160,7 +167,7 @@ function FilmList() {
       Poster: "https://m.media-amazon.com/images/I/91WlTjCgu4L.jpg",
     },
     {
-      id: 10,
+      id: '10',
       Image:
         "https://genk.mediacdn.vn/2018/3/31/photo-1-15224620607731943989009.jpeg",
       Title: "READY PLAYER ONE",
@@ -177,7 +184,7 @@ function FilmList() {
         "https://i.etsystatic.com/12729518/r/il/6958c2/2049055905/il_570xN.2049055905_jsq6.jpg",
     },
     {
-      id: 11,
+      id: '11',
       Image:
         "https://www.hollywoodreporter.com/wp-content/uploads/2023/04/SpiderManAcrossTheSpiderVerse_TheSpot_01-1.jpg?w=1296",
       Title: "SPIDER-MAN: ACROSS THE SPIDER-VERSE",
@@ -194,9 +201,8 @@ function FilmList() {
         "https://images2.thanhnien.vn/528068263637045248/2023/6/1/spider-man-across-the-spider-verse-poster-16850724641101103572976-168564586504456671684.jpg",
     },
     {
-      id: 12,
-      Image:
-        "https://i.ytimg.com/vi/DQAHg4e9-wk/maxresdefault.jpg",
+      id: '12',
+      Image: "https://i.ytimg.com/vi/DQAHg4e9-wk/maxresdefault.jpg",
       Title: "GODZILLA x KONG: The New Empire",
       Year: "2024",
       Nation: "USA",
@@ -207,12 +213,12 @@ function FilmList() {
         "https://yt3.googleusercontent.com/hPeWHgaHPCSJOMy20xsfOfjojubHxbsoQC_5sFAy96E_5_EkXEOf49EUntgIQL_6yb79ndyW=s176-c-k-c0x00ffffff-no-rj",
       Author: "Cinematic Pro Studio",
       Facebook: "https://www.youtube.com/@CinematicProStudio",
-      Poster: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f452aa2c-0c64-4bbf-b065-942b8dbda8bb/dfv1c3k-6e648d98-6732-45f2-80d2-99a44e19d7e1.jpg/v1/fill/w_728,h_1097,q_70,strp/godzilla_x_kong___the_new_empire_by_diamonddead_art_dfv1c3k-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTUwNyIsInBhdGgiOiJcL2ZcL2Y0NTJhYTJjLTBjNjQtNGJiZi1iMDY1LTk0MmI4ZGJkYThiYlwvZGZ2MWMzay02ZTY0OGQ5OC02NzMyLTQ1ZjItODBkMi05OWE0NGUxOWQ3ZTEuanBnIiwid2lkdGgiOiI8PTEwMDAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.BYqdaE9cMD4HyKRDrehRsQUS7DxcoGFqr-XFFcP4gPE",
+      Poster:
+        "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f452aa2c-0c64-4bbf-b065-942b8dbda8bb/dfv1c3k-6e648d98-6732-45f2-80d2-99a44e19d7e1.jpg/v1/fill/w_728,h_1097,q_70,strp/godzilla_x_kong___the_new_empire_by_diamonddead_art_dfv1c3k-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTUwNyIsInBhdGgiOiJcL2ZcL2Y0NTJhYTJjLTBjNjQtNGJiZi1iMDY1LTk0MmI4ZGJkYThiYlwvZGZ2MWMzay02ZTY0OGQ5OC02NzMyLTQ1ZjItODBkMi05OWE0NGUxOWQ3ZTEuanBnIiwid2lkdGgiOiI8PTEwMDAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.BYqdaE9cMD4HyKRDrehRsQUS7DxcoGFqr-XFFcP4gPE",
     },
     {
-      id: 13,
-      Image:
-        "https://i.ytimg.com/vi/DQAHg4e9-wk/maxresdefault.jpg",
+      id: '13',
+      Image: "https://i.ytimg.com/vi/DQAHg4e9-wk/maxresdefault.jpg",
       Title: "GODZILLA x KONG: The New Empire",
       Year: "2024",
       Nation: "USA",
@@ -223,10 +229,11 @@ function FilmList() {
         "https://yt3.googleusercontent.com/hPeWHgaHPCSJOMy20xsfOfjojubHxbsoQC_5sFAy96E_5_EkXEOf49EUntgIQL_6yb79ndyW=s176-c-k-c0x00ffffff-no-rj",
       Author: "Cinematic Pro Studio",
       Facebook: "https://www.youtube.com/@CinematicProStudio",
-      Poster: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f452aa2c-0c64-4bbf-b065-942b8dbda8bb/dfv1c3k-6e648d98-6732-45f2-80d2-99a44e19d7e1.jpg/v1/fill/w_728,h_1097,q_70,strp/godzilla_x_kong___the_new_empire_by_diamonddead_art_dfv1c3k-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTUwNyIsInBhdGgiOiJcL2ZcL2Y0NTJhYTJjLTBjNjQtNGJiZi1iMDY1LTk0MmI4ZGJkYThiYlwvZGZ2MWMzay02ZTY0OGQ5OC02NzMyLTQ1ZjItODBkMi05OWE0NGUxOWQ3ZTEuanBnIiwid2lkdGgiOiI8PTEwMDAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.BYqdaE9cMD4HyKRDrehRsQUS7DxcoGFqr-XFFcP4gPE",
+      Poster:
+        "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f452aa2c-0c64-4bbf-b065-942b8dbda8bb/dfv1c3k-6e648d98-6732-45f2-80d2-99a44e19d7e1.jpg/v1/fill/w_728,h_1097,q_70,strp/godzilla_x_kong___the_new_empire_by_diamonddead_art_dfv1c3k-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTUwNyIsInBhdGgiOiJcL2ZcL2Y0NTJhYTJjLTBjNjQtNGJiZi1iMDY1LTk0MmI4ZGJkYThiYlwvZGZ2MWMzay02ZTY0OGQ5OC02NzMyLTQ1ZjItODBkMi05OWE0NGUxOWQ3ZTEuanBnIiwid2lkdGgiOiI8PTEwMDAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.BYqdaE9cMD4HyKRDrehRsQUS7DxcoGFqr-XFFcP4gPE",
     },
   ];
-  const { play, setToggle, toggle } = FilmAuth();
+  const { play, setToggle, toggle, open, setOpen,checkDelete } = FilmAuth();
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
     ...theme.typography.body2,
@@ -235,17 +242,59 @@ function FilmList() {
     marginTop: "20%",
     color: theme.palette.text.secondary,
   }));
+  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
+  const filmRemaining = useSelector(filmRemainingSelector);
+  useEffect(() => {
+    const test = async () => {
+      const dataPromise = axios.get("/film");
+      dataPromise
+        .then((data) => {
+          setLoading(false);
+          dispatch(addAllFilm(data.data));
+        })
+        .catch(() => {
+          console.log("Cannot Get List Film");
+        });
+    };
+    test();
+  }, [open]);
+
+
   return (
     <>
       {toggle ? (
-        <div className={styles.filmItem}>
-          {films.map((film, index) => {
-            return (
-              <div key={film.id}>
-                <FilmItem film={film} />;
-              </div>
-            );
-          })}
+        loading ? (
+          <div
+            style={{
+              background: "#104474",
+              height: "100vh",
+              width: "100vw",
+              marginTop: "-100px",
+              marginBottom: "-200px",
+              marginLeft: "-100px",
+              zIndex: 1,
+            }}
+          >
+            <Loading />
+          </div>
+        ) : (
+          <div className={styles.filmItem}>
+            <div style={{ marginBottom: "20px" }}>
+              <FilmItemAdd />
+            </div>
+            {filmRemaining.map((film, index) => {
+              return (
+                <div key={film.id}>
+                  <FilmItem film={film} />;
+                </div>
+              );
+            })}
+          </div>
+        )
+      ) : loading ? (
+        <div style={{ background: "#104474", height: "100vh", width: "100vw" }}>
+          <Loading />
         </div>
       ) : (
         <Grid
@@ -259,7 +308,9 @@ function FilmList() {
           mt={"10%"}
           ml={"1%"}
         >
-          {films.map((film, index) => {
+          <Toaster></Toaster>
+          <FilmItemAdd2 />
+          {filmRemaining.map((film, index) => {
             return (
               <div key={film.id}>
                 <FilmItem2 film={film} />;

@@ -11,6 +11,9 @@ export const AuthContextProvider = ({ children }) => {
   const [duration, setDuration] = useState();
   const check = useSelector(filmSelector);
   const [toggle, setToggle] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [openUpdate, setOpenUpdate] = useState(false);
+  const [checkDelete, setCheckDelete] = useState(false);
   const takeDuration = (dura) => {
     return dura;
   };
@@ -35,6 +38,7 @@ export const AuthContextProvider = ({ children }) => {
   }, [play]);
 
   useEffect(() => console.log("mounted"), [toggle]);
+  useEffect(() => console.log(checkDelete), [checkDelete]);
 
   // useEffect(() => {
   //   const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
@@ -63,6 +67,12 @@ export const AuthContextProvider = ({ children }) => {
         duration,
         setToggle,
         toggle,
+        setOpen,
+        open,
+        setOpenUpdate,
+        openUpdate,
+        checkDelete,
+        setCheckDelete,
       }}
     >
       {children}
